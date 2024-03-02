@@ -119,7 +119,8 @@ int main(){
     int ch;
     while(1){
         cout<<"enter any one of following the choice"<<endl;
-        cout<<"1.Add New Element 2.Display 3.Add at Beginning 4.Specified Location"<<endl<<"5.Delete from Begining 6.Delete from End 7.Delete from specitied position 8.Exit "<<endl;
+        cout<<"1.Insert New Element 2.Display 3.Insert at Beginning 4.Insert at Specified Location"
+        <<endl<<"5.Delete from Begining 6.Delete from End 7.Delete from specitied position 8.Exit "<<endl;
         cin>>ch;
         switch(ch){
             case 1:
@@ -151,7 +152,7 @@ int main(){
                 return 0;
                 break;
             default:
-                cout<<"choose the correct answer"<<endl;
+                cout<<"choose the correct option"<<endl;
                 break;
         }
     }
