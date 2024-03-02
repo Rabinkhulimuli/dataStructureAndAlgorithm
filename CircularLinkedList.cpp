@@ -31,7 +31,7 @@ void AddNewList(Cnode** head,Cnode** tail){
         temp->next=temp1;
         temp1->prev=temp;
         temp1->next=*head;
-        (*tail)->next=temp1;
+        *tail=temp1;
     }
 }
 void display(Cnode** head,Cnode** tail){
@@ -57,7 +57,7 @@ void begadd(Cnode** head,Cnode** tail){
     cin>>num;
     Cnode* temp=new Cnode;
     temp->data=num;
-    temp->prev=nullptr;
+    temp->prev=*tail;
     temp->next=current;
     current->prev=temp;
     *head=temp;
@@ -67,7 +67,7 @@ void delbeg(Cnode** head,Cnode** tail){
         return;
     }
     Cnode* current=*head;
-    if(current->next==nullptr){
+    if(current->next==*tail){
         cout<<current->data<<" has been deleted"<<endl;
         *head=nullptr;
         free(current);
@@ -75,7 +75,7 @@ void delbeg(Cnode** head,Cnode** tail){
     }
     Cnode* temp=current->next;
     cout<<current->data<<" has been deleted"<<endl;
-    temp->prev=nullptr;
+    temp->prev=*tail;
     *head=temp;
     free(current);
 }
@@ -85,18 +85,21 @@ void deleteE(Cnode** head,Cnode** tail){
     }
     Cnode* current=*head;
     Cnode* temp;
-    if(current->next==nullptr){
+    if(current==*tail){
         cout<<current->data<<" has been deleted"<<endl;
         *head=nullptr;
+        *tail=nullptr;
         free(current);
         return;
     }
-    while(current->next !=nullptr){
+    while(current !=*tail){
         temp=current;
         current=current->next;
     }
     cout<<current->data<<" has been deleted"<<endl;
-    temp->next=nullptr;
+    temp->next=*head;
+    (*head)->prev=temp;
+    *tail=temp;
     free(current);
 }
 
@@ -107,9 +110,8 @@ int main(){
     int ch;
     while(1){
         cout<<"Enter any one of the following choice"<<endl;
-        cout<<"1.Insert New Element 2.Display 3.Insert at Beginning 4.Insert at Specified Location"<<endl
-        <<"5.Delete from Begining 6.Delete from End 7.Delete from specitied position "
-        <<"8.Exit "<<endl;
+        cout<<"1.Insert New Element 2.Display 3.Insert at Beginning "<<endl
+        <<"4.Delete from Begining 5.Delete from End 6.Exit  "<<endl;
         cin>>ch;
         switch(ch){
             case 1:
@@ -121,15 +123,15 @@ int main(){
             case 3:
                 begadd(&head,&tail);
                 break;
-            case 5:
+            case 4:
                 delbeg(&head,&tail);
                 break;
-            case 6:
+            case 5:
                 if(!empty(&head)){
                     deleteE(&head,&tail);
                 }
                 break;
-            case 8:
+            case 6:
                 return 0;
                 break;
             default:
