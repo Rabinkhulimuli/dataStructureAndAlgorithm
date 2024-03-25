@@ -17,8 +17,8 @@ void display(int arr[], int n) {
     cout << endl;
 }
 void bubble_sort(int arr[],int n){
-        for (int i=0;i<5;i++){
-            for(int j=0;j<5-i-1;j++){
+        for (int i=0;i<n;i++){
+            for(int j=0;j<n-i-1;j++){
                 if(arr[j]>arr[j+1]){
                     swap(arr[j],arr[j+1]);
                 }
@@ -30,10 +30,10 @@ void bubble_sort(int arr[],int n){
 void sellection_sort(int arr[],int n){
     int min_index;
     
-    for (int i=0;i<5-1;i++){
+    for (int i=0;i<n-1;i++){
         min_index=i;
         bool change=false;
-        for(int j=i+1;j<5;j++){
+        for(int j=i+1;j<n;j++){
             if(arr[j]<arr[min_index]){
                 change=true;
                 min_index=j;
