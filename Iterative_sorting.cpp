@@ -9,10 +9,12 @@ void create_array(int arr[],int *n){
     }
 
 }
-void display(int arr[],int n){
-    for (int i=0;i<n;i++){
-        cout<<arr[i]<<endl;
+void display(int arr[], int n) {
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
     }
+    cout << endl;
 }
 void bubble_sort(int arr[],int n){
         for (int i=0;i<5;i++){
